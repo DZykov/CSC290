@@ -36,6 +36,10 @@ class Player(object):
                             self.screen_size[1]-self.size-10)
             print("WTF", bullet.x, "||", bullet.y)
 
+class TestsNIC:
+    def __init__(self):
+        pass
+
 
 class Invaders:
 
