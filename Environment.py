@@ -1,7 +1,7 @@
 import pygame
 
 
-class Player(object):
+class Player:
 
     def __init__(self, screen, screen_size, size, colour):
         self.x = screen_size[0] / 2
