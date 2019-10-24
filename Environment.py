@@ -153,6 +153,7 @@ while play:
     invaders1.draw()
     invaders2.draw()
     invaders3.draw()
+
     invaders.cycle()
     invaders1.cycle()
     invaders2.cycle()
