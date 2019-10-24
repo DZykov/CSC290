@@ -115,53 +115,59 @@ class Bullet:
     def cycle(self):
         self.move(0, -1)
 
-pygame.init()
-screen_size = (800, 400)
-background = (0, 0, 0)
-red = (255, 0, 0)
-blue = (0, 0, 255)
-green = (0, 255, 0)
-player_size = 30
-enemy_y_gap = 20
 
-screen = pygame.display.set_mode((screen_size[0], screen_size[1]))
-play = True
-clock = pygame.time.Clock()
+class Environment:
+    pygame.init()
+    screen_size = (800, 400)
+    background = (0, 0, 0)
+    red = (255, 0, 0)
+    blue = (0, 0, 255)
+    green = (0, 255, 0)
+    player_size = 30
+    enemy_y_gap = 20
 
-player = Player(screen, screen_size, player_size, red)
+    screen = pygame.display.set_mode((screen_size[0], screen_size[1]))
+    play = True
+    clock = pygame.time.Clock()
 
-invader = Invaders(screen, screen_size, player_size, blue, 0, 0)
-invader1 = Invaders(screen, screen_size, player_size, green, 0,
-                    player_size+enemy_y_gap)
-invader2 = Invaders(screen, screen_size, player_size, blue, 0, 2*(player_size+enemy_y_gap))
-invader3 = Invaders(screen, screen_size, player_size, green, 0, 3*(player_size+enemy_y_gap))
+    player = Player(screen, screen_size, player_size, red)
 
-invaders = Group(invader)
-invaders1 = Group(invader1)
-invaders2 = Group(invader2)
-invaders3 = Group(invader3)
+    invader = Invaders(screen, screen_size, player_size, blue, 0, 0)
+    invader1 = Invaders(screen, screen_size, player_size, green, 0,
+                        player_size+enemy_y_gap)
+    invader2 = Invaders(screen, screen_size, player_size, blue, 0, 2*(player_size+enemy_y_gap))
+    invader3 = Invaders(screen, screen_size, player_size, green, 0, 3*(player_size+enemy_y_gap))
 
-while play:
+    invaders = Group(invader)
+    invaders1 = Group(invader1)
+    invaders2 = Group(invader2)
+    invaders3 = Group(invader3)
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            play = False
+    while play:
 
-    screen.fill(background)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                play = False
 
-    invaders.draw()
-    invaders1.draw()
-    invaders2.draw()
-    invaders3.draw()
-    invaders.cycle()
-    invaders1.cycle()
-    invaders2.cycle()
-    invaders3.cycle()
+        screen.fill(background)
 
-    pressed_key = pygame.key.get_pressed()
-    player.control(pressed_key)
+        invaders.draw()
+        invaders1.draw()
+        invaders2.draw()
+        invaders3.draw()
 
-    player.draw()
+        invaders.cycle()
+        invaders1.cycle()
+        invaders2.cycle()
+        invaders3.cycle()
 
-    pygame.display.flip()
-    clock.tick(60)
+        pressed_key = pygame.key.get_pressed()
+        player.control(pressed_key)
+
+        player.draw()
+
+        pygame.display.flip()
+        clock.tick(60)
+
+
+Environment()
