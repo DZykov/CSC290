@@ -2,6 +2,7 @@ import pygame
 
 
 class Player:
+    
 
     def __init__(self, screen, screen_size, size, colour):
         self.x = screen_size[0] / 2
@@ -40,6 +41,14 @@ class Player:
                         self.x + self.size / 2,
                         self.screen_size[1] - self.size - 10)
         print("WTF", bullet.x, "||", bullet.y)
+        
+    def got_hit(self):
+            self.health -= 1
+            game_over()
+    
+    def game_over(self):
+            if self.health == 0:
+                Environment.play = False
 
 
 class Invaders:
