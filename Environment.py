@@ -11,6 +11,7 @@ class Player:
         self.screen = screen
         self.screen_size = screen_size
         self.prev_coord = (self.x, self.y)
+        self.health = 6
 
     def draw(self):
         pygame.draw.rect(self.screen, self.colour,
@@ -32,9 +33,13 @@ class Player:
         if self.y <= 0 or self.y >= self.screen_size[1] - self.size:
             self.y = self.prev_coord[1]
         if pressed_key[pygame.K_SPACE]:
-            bullet = Bullet(self.screen, self.screen_size, 3, (0,255,0), self.x+self.size/2,
-                            self.screen_size[1]-self.size-10)
-            print("WTF", bullet.x, "||", bullet.y)
+            self.shoot()
+
+    def shoot(self):
+        bullet = Bullet(self.screen, self.screen_size, 3, (0, 255, 0),
+                        self.x + self.size / 2,
+                        self.screen_size[1] - self.size - 10)
+        print("WTF", bullet.x, "||", bullet.y)
 
 
 class Invaders:
