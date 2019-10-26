@@ -41,12 +41,6 @@ class Player:
                         self.screen_size[1] - self.size - 10)
         print("WTF", bullet.x, "||", bullet.y)
 
-    def got_hit(self):
-        if self.health != 1:
-            self.health -= 1
-        else:
-            Environment.play = False
-
 
 class Invaders:
 
