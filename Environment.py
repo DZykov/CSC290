@@ -40,6 +40,43 @@ class TestsNIC:
     def __init__(self):
         pass
 
+class Laser:
+    def __init__(self, colour, x, y, spd, dmg, file):
+        self.x = x
+        self.y = y
+        self.spd = spd
+        self.dmg = dmg
+        self.colour = colour
+        self.icon = pygame.image.load(file)
+    def move(self):
+        self.y += self.spd
+
+
+class Barrier:
+    def __init__(self, x, y, hp, file):
+
+        self.x = x
+        self.y = y
+        self.hp = hp
+        self.icon = pygame.image.load(file)
+        self.screen = screen
+
+    def remove(self,):
+        pass
+    def apperarence(self,file1,file2,file3):
+        if self.hp == 100:
+
+            self.icon = pygame.image.load(file1)
+
+        elif self.hp >50 and self.hp<100:
+            self.icon = pygame.image.load(file2)
+        elif self. hp <= 50 and self.hp > 0:
+            self.icon = pygame.image.load(file3)
+        elif self.hp <= 0:
+            pass
+
+
+
 
 class Invaders:
 
@@ -144,6 +181,8 @@ invaders = Group(invader)
 invaders1 = Group(invader1)
 invaders2 = Group(invader2)
 invaders3 = Group(invader3)
+
+barrier = Barrier(0,0,100,"C:/Users/Klaudius/Desktop/290 project/CSC290/wall-24.png")
 
 while play:
 
