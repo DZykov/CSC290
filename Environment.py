@@ -1,59 +1,70 @@
+from pygame import *
 import pygame
 
 
-class Player:
+class Player(sprite.Sprite):
 
-    def __init__(self, screen, screen_size, size, colour):
+    def __init__(self, screen, screen_size, size):
+        sprite.Sprite.__init__(self)
         self.x = screen_size[0] / 2
         self.y = screen_size[1] - size - 5
         self.size = size
-        self.colour = colour
+        self.image = pygame.transform.scale((image.load("ship.png")), (size, size))
+        # crunch to rotate an image
+        # image will be changed in ps
+        self.image = pygame.transform.rotate(self.image, 135)
+        self.rect = self.image.get_rect(center=(self.x, self.y))
         self.screen = screen
         self.screen_size = screen_size
         self.prev_coord = (self.x, self.y)
 
     def draw(self):
-        pygame.draw.rect(self.screen, self.colour,
-                         pygame.Rect(self.x, self.y, self.size, self.size))
+        self.screen.blit(self.image, self.rect)
 
     def move(self, x, y):
-        self.prev_coord = (self.x, self.y)
         self.x += x
         self.y += y
+        self.rect = self.rect.move((x, y))
 
     def control(self, pressed_key):
         self.prev_coord = (self.x, self.y)
-        # if pressed_key[pygame.K_UP]: self.y += -5
-        # if pressed_key[pygame.K_DOWN]: self.y += 5
-        if pressed_key[pygame.K_LEFT]: self.x += -5
-        if pressed_key[pygame.K_RIGHT]: self.x += 5
-        if self.x <= 0 or self.x >= self.screen_size[0] - self.size:
-            self.x = self.prev_coord[0]
-        if self.y <= 0 or self.y >= self.screen_size[1] - self.size:
-            self.y = self.prev_coord[1]
+        if pressed_key[pygame.K_LEFT]:
+            if 0 <= self.x - 5 <= self.screen_size[0] - self.size:
+                self.move(-5, 0)
+        if pressed_key[pygame.K_RIGHT]:
+            if 0 <= self.x + 5 <= self.screen_size[0] - self.size:
+                self.move(5, 0)
         if pressed_key[pygame.K_SPACE]:
-            bullet = Bullet(self.screen, self.screen_size, 3, (0,255,0), self.x+self.size/2,
-                            self.screen_size[1]-self.size-10)
-            print("WTF", bullet.x, "||", bullet.y)
+            self.shoot()
+
+    def shoot(self):
+        bullet = Bullet(self.screen, self.screen_size, 3, (0, 255, 0),
+                        self.x + self.size / 2,
+                        self.screen_size[1] - self.size - 10)
+        bullet.cycle()
+        del bullet
 
 
-class Invaders:
+class Invaders(sprite.Sprite):
 
-    def __init__(self, screen, screen_size, size, colour, x, y):
+    def __init__(self, screen, screen_size, size, pic, x, y):
+        sprite.Sprite.__init__(self)
         self.x = x
         self.y = y
         self.size = size
-        self.colour = colour
+        self.im = pic
+        self.pic = pygame.transform.scale((image.load(pic)), (size, size))
+        self.rect = self.pic.get_rect(center=(self.x, self.y))
         self.screen = screen
         self.screen_size = screen_size
 
     def draw(self):
-        pygame.draw.rect(self.screen, self.colour,
-                         pygame.Rect(self.x, self.y, self.size, self.size))
+        self.screen.blit(self.pic, self.rect)
 
     def move(self, x, y):
         self.x += x
         self.y += y
+        self.rect = self.rect.move((x, y))
 
 
 class Group:
@@ -67,8 +78,10 @@ class Group:
         invaders = []
         for x in range(self.enemy_number):
             a = Invaders(invader.screen, invader.screen_size, invader.size,
-                         invader.colour,
-                         10 + x * (self.space_between_enemies + self.enemy_size), invader.y)
+                         invader.im,
+                         10 + x * (
+                                 self.space_between_enemies + self.enemy_size),
+                         invader.y)
             invaders.append(a)
         self.invaders = invaders
         self.de_way = "R"
@@ -113,10 +126,14 @@ class Bullet:
         self.y += y
 
     def cycle(self):
-        self.move(0, -1)
+        self.draw()
+        while self.y >= 0:
+            self.move(0, -1)
+            self.draw()
 
 
 class Environment:
+
     pygame.init()
     screen_size = (800, 400)
     background = (0, 0, 0)
@@ -130,33 +147,32 @@ class Environment:
     play = True
     clock = pygame.time.Clock()
 
-    player = Player(screen, screen_size, player_size, red)
+    player = Player(screen, screen_size, player_size)
 
-    invader = Invaders(screen, screen_size, player_size, blue, 0, 0)
-    invader1 = Invaders(screen, screen_size, player_size, green, 0,
-                        player_size+enemy_y_gap)
-    invader2 = Invaders(screen, screen_size, player_size, blue, 0, 2*(player_size+enemy_y_gap))
-    invader3 = Invaders(screen, screen_size, player_size, green, 0, 3*(player_size+enemy_y_gap))
+    invader1 = Invaders(screen, screen_size, player_size, "invader1.png", 0,
+                        player_size + enemy_y_gap)
+    invader2 = Invaders(screen, screen_size, player_size, "invader2.png", 0,
+                        2 * (player_size + enemy_y_gap))
+    invader3 = Invaders(screen, screen_size, player_size, "invader3.png", 0,
+                        3 * (player_size + enemy_y_gap))
 
-    invaders = Group(invader)
     invaders1 = Group(invader1)
     invaders2 = Group(invader2)
     invaders3 = Group(invader3)
 
     while play:
 
+        clock.tick(60)
+        screen.fill(background)
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 play = False
 
-        screen.fill(background)
-
-        invaders.draw()
         invaders1.draw()
         invaders2.draw()
         invaders3.draw()
 
-        invaders.cycle()
         invaders1.cycle()
         invaders2.cycle()
         invaders3.cycle()
@@ -167,7 +183,7 @@ class Environment:
         player.draw()
 
         pygame.display.flip()
-        clock.tick(60)
 
 
-Environment()
+if __name__ == '__main__':
+    Environment()
