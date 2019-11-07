@@ -1,3 +1,5 @@
+import random
+
 from pygame import *
 import pygame
 
@@ -44,7 +46,7 @@ class Bullet(sprite.Sprite):
         self.rect.centerx, self.x = x, x
         self.speedy = speedy
         self.speedx = speedx
-        self.screen_size = screen_size # this part is undone
+        self.screen_size = screen_size  # this part is undone
 
     def update(self):
         self.rect.y += self.speedy
@@ -60,10 +62,10 @@ class Bullet(sprite.Sprite):
 
 class Invader(sprite.Sprite):
 
-    def __init__(self, screen_size, size, string):
+    def __init__(self, screen_size, size, string, x, y):
         sprite.Sprite.__init__(self)
-        self.x = 20
-        self.y = 20
+        self.x = x
+        self.y = y
         self.size = size
         self.image = pygame.transform.scale((image.load(string)),
                                             (size, size))
@@ -72,18 +74,61 @@ class Invader(sprite.Sprite):
         self.prev_coord = (self.x, self.y)
 
     def move(self, x, y):
-        if 0 <= self.x + x <= self.screen_size[0] and 0 <= self.y + y <= self.screen_size[1]:
+        if 0 <= self.x + x <= self.screen_size[0] and 0 <= self.y + y <= \
+                self.screen_size[1]:
             self.x += x
             self.y += y
             self.rect = self.rect.move((x, y))
 
 
-class EnemiesGroup(sprite.Group):
-    def __init__(self, screen_size, size):
+class InvadersGroup(sprite.Group):
+    def __init__(self, screen_size, size, space):
         sprite.Group.__init__(self)
+        self.screen_size = screen_size
+        self.size = size
+        self.rows = int(
+            screen_size[0] / 100 * 75 /
+            (size + space))
+        self.columns = 4
+        self.invaders = []
+        self.n = len(self.invaders)
+        self.de_way = "R"
+        self.died = 0
+
+    def move(self, x, y):
+        for invader in self.invaders:
+            invader.move(x, y)
 
     def update(self):
-        pass
+        if self.de_way == "L":
+            self.move(-1, 0)
+            if self.invaders[0].x - self.invaders[-1].size <= 0:
+                self.de_way = "R"
+        if self.de_way == "R":
+            self.move(1, 0)
+            if self.invaders[-1].x >= \
+                    self.screen_size[0] - self.invaders[-1].size:
+                self.de_way = "L"
+
+    def add_internal(self, *sprites):
+        super(InvadersGroup, self).add_internal(*sprites)
+        for s in sprites:
+            self.invaders.append(s)
+
+    def remove_internal(self, *sprites):
+        super(InvadersGroup, self).remove_internal(*sprites)
+        for s in sprites:
+            self.kill(s)
+
+    def kill(self, enemy):
+        self.n = -1
+        self.died = +1
+        self.invaders.remove(enemy)
+        del enemy
+
+    def shoot(self):
+        a = random.choice(self.invaders)
+        return a.x, a.y
 
 
 class Environment(object):
@@ -94,24 +139,24 @@ class Environment(object):
         red = (255, 0, 0)
         blue = (0, 0, 255)
         green = (0, 255, 0)
-        size = 30
-        enemy_y_gap = 20
+        self.size = 30
+        self.gap = 20
 
         self.max_bullets = 3  # number of bullets allowed
         self.bullets = sprite.Group()
+        self.enemy_bullets = sprite.Group()
+
+        self.invaders = self.create_invaders()
 
         self.keys = key.get_pressed()
-        self.screen = pygame.display.set_mode((self.screen_size[0], self.screen_size[1]))
+        self.screen = pygame.display.set_mode(
+            (self.screen_size[0], self.screen_size[1]))
         self.play = True
         self.clock = pygame.time.Clock()
 
-        self.player = Player(self.screen_size, size)
+        self.player = Player(self.screen_size, self.size)
 
-        # demo line
-        self.enemy = Invader(self.screen_size, size, "invader1.png")
-
-        self.all_sprites = pygame.sprite.Group()
-        self.all_sprites.add(self.enemy)
+        self.all_sprites = sprite.Group()
         self.all_sprites.add(self.player)
 
         while self.play:
@@ -121,7 +166,12 @@ class Environment(object):
             self.check_control()
             self.check_collision()
 
+            self.invaders_shoot()
+
             self.all_sprites.update()
+            self.invaders.update()
+
+            self.invaders.draw(self.screen)
             self.all_sprites.draw(self.screen)
 
             pygame.display.flip()
@@ -135,7 +185,8 @@ class Environment(object):
                 if e.key == K_SPACE:
                     if len(self.bullets) < self.max_bullets:
                         bullet = Bullet(self.player.x,
-                                        self.player.y - self.player.size, -3, 0, self.screen_size)
+                                        self.player.y - self.player.size, -3, 0,
+                                        self.screen_size)
                         self.bullets.add(bullet)
                         self.all_sprites.add(self.bullets)
 
@@ -143,12 +194,35 @@ class Environment(object):
         # checks for single sprite ->
         # sprite.groupcollide(self.GroupEnemy, self.bullets,
         # True, True).keys():check for sprites
-        hits = sprite.spritecollide(self.enemy, self.bullets, True)
-        if hits:
-            self.all_sprites.remove(self.enemy)
-            self.enemy.x = -10
-            self.enemy.y = -10
-            self.enemy.kill()
+        pygame.sprite.groupcollide(self.invaders, self.bullets, True, True)
+        pygame.sprite.groupcollide(self.enemy_bullets, self.bullets, True, True)
+        if pygame.sprite.spritecollide(self.player, self.enemy_bullets, True):
+            self.play = False
+
+    def create_invaders(self):
+        invaders = InvadersGroup(self.screen_size, self.size, self.gap)
+        n = int(
+            self.screen_size[0] / 100 * 75 /
+            (self.size + self.gap))
+        break_p = self.size + self.gap
+        for i in range(n):
+            invader = Invader(self.screen_size, self.size, "invader1.png", i*(self.gap+self.size), break_p)
+            invaders.add(invader)
+        for i in range(n):
+            invader = Invader(self.screen_size, self.size, "invader2.png", i*(self.gap+self.size), 2*break_p)
+            invaders.add(invader)
+        for i in range(n):
+            invader = Invader(self.screen_size, self.size, "invader3.png", i*(self.gap+self.size), 3*break_p)
+            invaders.add(invader)
+        return invaders
+
+    def invaders_shoot(self):
+        a = random.randint(0, 1000)
+        if a <= 50:
+            x, y = self.invaders.shoot()
+            bullet = Bullet(x, y + self.size, 3, 0, self.screen_size)
+            self.enemy_bullets.add(bullet)
+            self.all_sprites.add(self.enemy_bullets)
 
 
 if __name__ == '__main__':
