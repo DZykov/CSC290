@@ -1,5 +1,5 @@
 import random
-
+import sys
 from pygame import *
 import pygame
 
@@ -86,12 +86,8 @@ class InvadersGroup(sprite.Group):
         sprite.Group.__init__(self)
         self.screen_size = screen_size
         self.size = size
-        self.rows = int(
-            screen_size[0] / 100 * 75 /
-            (size + space))
-        self.columns = 4
+        self.space = space
         self.invaders = []
-        self.n = len(self.invaders)
         self.de_way = "R"
         self.died = 0
 
@@ -100,6 +96,9 @@ class InvadersGroup(sprite.Group):
             invader.move(x, y)
 
     def update(self):
+        if len(self.invaders) == 0:
+            print("U WON!!!")
+            sys.exit()
         if self.de_way == "L":
             self.move(-1, 0)
             if self.invaders[0].x - self.invaders[-1].size <= 0:
@@ -107,7 +106,7 @@ class InvadersGroup(sprite.Group):
         if self.de_way == "R":
             self.move(1, 0)
             if self.invaders[-1].x >= \
-                    self.screen_size[0] - self.invaders[-1].size:
+                    self.screen_size[0] - self.invaders[-1].size - self.space:
                 self.de_way = "L"
 
     def add_internal(self, *sprites):
@@ -121,7 +120,6 @@ class InvadersGroup(sprite.Group):
             self.kill(s)
 
     def kill(self, enemy):
-        self.n = -1
         self.died = +1
         self.invaders.remove(enemy)
         del enemy
