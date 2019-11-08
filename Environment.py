@@ -1,6 +1,7 @@
 import random
 import sys
 from pygame import *
+import pygame
 
 
 class Player(sprite.Sprite):
@@ -17,7 +18,7 @@ class Player(sprite.Sprite):
         self.image = pygame.transform.rotate(self.image, 135)
         self.rect = self.image.get_rect(center=(self.x, self.y))
         self.screen_size = screen_size
-        self.prev_coord = (self.x, self.y)
+        self.health = 10
 
     def move(self, x, y):
         self.x += x
@@ -70,7 +71,7 @@ class Invader(sprite.Sprite):
                                             (size, size))
         self.rect = self.image.get_rect(center=(self.x, self.y))
         self.screen_size = screen_size
-        self.prev_coord = (self.x, self.y)
+        self.health = 3
 
     def move(self, x, y):
         if 0 <= self.x + x <= self.screen_size[0] and 0 <= self.y + y <= \
@@ -185,10 +186,18 @@ class Environment(object):
                         self.all_sprites.add(self.bullets)
 
     def check_collision(self):
-        pygame.sprite.groupcollide(self.invaders, self.bullets, True, True)
+        hits = pygame.sprite.groupcollide(self.invaders, self.bullets, False, True)
+        for hit in hits:
+            hit.health = hit.health - 1
+            print(hit.health)
+            if hit.health <= 0:
+                self.invaders.remove_internal(hit)
         pygame.sprite.groupcollide(self.enemy_bullets, self.bullets, True, True)
         if pygame.sprite.spritecollide(self.player, self.enemy_bullets, True):
-            self.play = False
+            print("You have", self.player.health, "hp")
+            self.player.health = self.player.health - 1
+            if self.player.health <= 0:
+                self.play = False
 
     def create_invaders(self):
         invaders = InvadersGroup(self.screen_size, self.size, self.gap)
