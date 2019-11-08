@@ -1,7 +1,6 @@
 import random
 import sys
 from pygame import *
-import pygame
 
 
 class Player(sprite.Sprite):
@@ -134,9 +133,6 @@ class Environment(object):
         init()
         self.screen_size = (800, 400)
         background = (0, 0, 0)
-        red = (255, 0, 0)
-        blue = (0, 0, 255)
-        green = (0, 255, 0)
         self.size = 30
         self.gap = 20
 
@@ -189,9 +185,6 @@ class Environment(object):
                         self.all_sprites.add(self.bullets)
 
     def check_collision(self):
-        # checks for single sprite ->
-        # sprite.groupcollide(self.GroupEnemy, self.bullets,
-        # True, True).keys():check for sprites
         pygame.sprite.groupcollide(self.invaders, self.bullets, True, True)
         pygame.sprite.groupcollide(self.enemy_bullets, self.bullets, True, True)
         if pygame.sprite.spritecollide(self.player, self.enemy_bullets, True):
