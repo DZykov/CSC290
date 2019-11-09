@@ -158,7 +158,7 @@ class InvadersGroup(sprite.Group):
 
     def __init__(self, screen_size, size, space):
         """
-        Init InvadersGroup with given attributes
+        Inits InvadersGroup with given attributes
         """
         sprite.Group.__init__(self)
         self.screen_size = screen_size
