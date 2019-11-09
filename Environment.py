@@ -128,7 +128,7 @@ class Invader(sprite.Sprite):
                                             (size, size))
         self.rect = self.image.get_rect(center=(self.x, self.y))
         self.screen_size = screen_size
-        self.health = 3
+        self.health = 1
 
     def move(self, x, y):
         """
