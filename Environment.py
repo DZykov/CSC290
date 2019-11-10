@@ -56,6 +56,18 @@ class Player(sprite.Sprite):
             if 0 <= self.x + 5 <= self.screen_size[0]:
                 self.move(5, 0)
 
+    def got_hit(self) -> bool:
+        if self.health > 1:
+            self.health -= 1
+        else:
+            self.game_over()
+
+    def game_over(self):
+        """
+        Ends the game and exits the pygame display.
+        """
+        print("Try again next time :(")
+        sys.exit()
 
 class Bullet(sprite.Sprite):
     """
@@ -168,6 +180,13 @@ class InvadersGroup(sprite.Group):
         self.de_way = "R"
         self.died = 0
 
+    def game_over(self):
+        """
+        Ends the game and exits the pygame display.
+        """
+        print("You won! Good Job!")
+        sys.exit()
+
     def move(self, x, y):
         """
         Moves each member of InvadersGroup by given x and y
@@ -184,8 +203,7 @@ class InvadersGroup(sprite.Group):
         were passed to this method are passed to the Sprite update function.
         """
         if len(self.invaders) == 0:
-            print("U WON!!!")
-            sys.exit()
+            self.game_over()
         if self.de_way == "L":
             self.move(-1, 0)
             if self.invaders[0].x - self.invaders[-1].size <= 0:
@@ -220,7 +238,7 @@ class InvadersGroup(sprite.Group):
         self.invaders.remove(enemy)
         del enemy
 
-    def shoot(self):
+    def shooter(self):
         """
         Chooses random member of InvadersGroup and return its coordinates
         """
@@ -296,6 +314,7 @@ class Environment(object):
                         self.bullets.add(bullet)
                         self.all_sprites.add(self.bullets)
 
+
     def check_collision(self):
         """
         Checks the collision for all objects in the Environment and proceeds
@@ -308,10 +327,8 @@ class Environment(object):
                 self.invaders.remove_internal(hit)
         pygame.sprite.groupcollide(self.enemy_bullets, self.bullets, True, True)
         if pygame.sprite.spritecollide(self.player, self.enemy_bullets, True):
-            print("You have", self.player.health, "hp")
-            self.player.health = self.player.health - 1
-            if self.player.health <= 0:
-                self.play = False
+            print("You have", self.player.health - 1, "hp")
+            self.player.got_hit()
 
     def create_invaders(self):
         """
@@ -340,7 +357,7 @@ class Environment(object):
         """
         a = random.randint(0, 1000)
         if a <= 50:
-            x, y = self.invaders.shoot()
+            x, y = self.invaders.shooter()
             bullet = Bullet(x, y + self.size, 3, 0, self.screen_size)
             self.enemy_bullets.add(bullet)
             self.all_sprites.add(self.enemy_bullets)
