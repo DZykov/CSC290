@@ -94,8 +94,6 @@ class Bullet(sprite.Sprite):
         self.rect.x += self.speedx
         self.y += self.speedy
         self.x += self.speedx
-        # kill if it moves off the top of the screen
-        # REDO it
         if self.y < 0 or self.y > self.screen_size[1] or \
                 self.x < 0 or self.x > self.screen_size[0]:
             self.kill()
@@ -158,7 +156,7 @@ class InvadersGroup(sprite.Group):
 
     def __init__(self, screen_size, size, space):
         """
-        Inits InvadersGroup with given attributes
+        Init InvadersGroup with given attributes
         """
         sprite.Group.__init__(self)
         self.screen_size = screen_size
@@ -298,6 +296,8 @@ class Environment(object):
 
     def check_collision(self):
         """
+        Preconditions: self.invaders, self.bullets, self.enemy_bullets and
+                            self.player are initialized anf none empty
         Checks the collision for all objects in the Environment and proceeds
         with specific instructions
         """
@@ -316,7 +316,7 @@ class Environment(object):
 
     def create_invaders(self):
         """
-        Create all needed Invaders for Environment and adds them to
+        Create all needed Invaders for Environment and returns them as
         InvadersGroup
         """
         invaders = InvadersGroup(self.screen_size, self.size, self.gap)
@@ -337,6 +337,7 @@ class Environment(object):
 
     def invaders_shoot(self):
         """
+        Preconditions: self.invaders is initialized and none empty
         Makes randomly chosen Invader to shoot
         """
         a = random.randint(0, 1000)
