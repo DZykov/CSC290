@@ -230,6 +230,7 @@ class Environment(object):
     """
     Documentation needed ###TO-DO
     """
+
     def __init__(self):
         """
         Inits Environment class
@@ -247,6 +248,7 @@ class Environment(object):
         self.enemy_bullets = sprite.Group()
 
         self.invaders = self.create_invaders()
+        self.barriers = self.create_barriers()
 
         self.keys = key.get_pressed()
         self.screen = pygame.display.set_mode(
@@ -270,8 +272,10 @@ class Environment(object):
 
             self.all_sprites.update()
             self.invaders.update()
+            self.barriers.update()
 
             self.invaders.draw(self.screen)
+            self.barriers.draw(self.screen)
             self.all_sprites.draw(self.screen)
 
             pygame.display.flip()
@@ -301,7 +305,8 @@ class Environment(object):
         Checks the collision for all objects in the Environment and proceeds
         with specific instructions
         """
-        hits = pygame.sprite.groupcollide(self.invaders, self.bullets, False, True)
+        hits = pygame.sprite.groupcollide(self.invaders, self.bullets, False,
+                                          True)
         for hit in hits:
             hit.health = hit.health - 1
             print(hit.health)
@@ -312,6 +317,7 @@ class Environment(object):
             print("You have", self.player.health, "hp")
             self.player.health = self.player.health - 1
             if self.player.health <= 0:
+                print('you died')
                 self.play = False
 
     def create_invaders(self):
@@ -325,13 +331,16 @@ class Environment(object):
             (self.size + self.gap))
         break_p = self.size + self.gap
         for i in range(n):
-            invader = Invader(self.screen_size, self.size, "invader1.png", i*(self.gap+self.size), break_p)
+            invader = Invader(self.screen_size, self.size, "invader1.png",
+                              i * (self.gap + self.size), break_p)
             invaders.add(invader)
         for i in range(n):
-            invader = Invader(self.screen_size, self.size, "invader2.png", i*(self.gap+self.size), 2*break_p)
+            invader = Invader(self.screen_size, self.size, "invader2.png",
+                              i * (self.gap + self.size), 2 * break_p)
             invaders.add(invader)
         for i in range(n):
-            invader = Invader(self.screen_size, self.size, "invader3.png", i*(self.gap+self.size), 3*break_p)
+            invader = Invader(self.screen_size, self.size, "invader3.png",
+                              i * (self.gap + self.size), 3 * break_p)
             invaders.add(invader)
         return invaders
 
