@@ -226,18 +226,53 @@ class Environment(object):
 
     
 class Menu(object):
+
+
+
     def __init__(self):
         self.screen_size = (800, 400)
         background = (0, 0, 0)
+        blue = (0, 0, 255)
         self.screen = pygame.display.set_mode((self.screen_size[0], self.screen_size[1])) 
         self.run = True 
         self.clock = pygame.time.Clock()
 
         while self.run:            
             self.screen.fill(background)
-            pygame.time.delay(5000)
-            self.run = False        
+                    #pygame.draw.rect(self.screen, blue ,(225, 270, 70, 35)) first rectangle
+                    #pygame.draw.rect(self.screen, blue ,(465, 270, 70, 35))
+                    #TR1.center = (260,285) - old value that might be used
+                    #TR2.center = (500, 285)
+            
+            TS, TR = text_objects("SPACE INVADERS: The Next Frontier", 40)
+            TS1, TR1 = text_objects("Press F to Start", 15)
+            TS2, TR2 = text_objects("Click to Select Ship", 15)
+            TR.center = (self.screen_size[0]//2, 100) 
+            TR1.center = (self.screen_size[0]//2, self.screen_size[1]//2 + 75)
+            TR2.center = (self.screen_size[0]//2, self.screen_size[1]//2 + 120)
+            pygame.draw.rect(self.screen, blue ,(330, 305, 140, 35))
+            self.screen.blit(TS, TR)
+            self.screen.blit(TS1, TR1)
+            self.screen.blit(TS2, TR2)
+            pygame.display.update()
+            #pygame.time.delay(5000)
+            #self.run = False        
+            ev = pygame.event.get()
+            for event in ev:
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    print("wasgud")
+                elif event.type == pygame.KEYDOWN:
+                    if pygame.key.get_pressed()[K_f]:
+                        self.run = False
+                        
 
+
+def text_objects(text, size):
+    ''' function returns <textSurface> and the rect surrounding the surface'''
+    pygame.font.init()
+    BASICFONT = pygame.font.SysFont('Arial', size)
+    textSurface = BASICFONT.render(text, True, (255,255,255))
+    return textSurface, textSurface.get_rect()  
 
 if __name__ == '__main__':
     Menu()
