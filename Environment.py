@@ -229,7 +229,7 @@ class Menu(object):
 
 
 
-    def __init__(self):
+    def __init__(self) -> bool:
         self.screen_size = (800, 400)
         background = (0, 0, 0)
         blue = (0, 0, 255)
@@ -254,18 +254,18 @@ class Menu(object):
             self.screen.blit(TS, TR)
             self.screen.blit(TS1, TR1)
             self.screen.blit(TS2, TR2)
-            pygame.display.update()
-            #pygame.time.delay(5000)
-            #self.run = False        
+            pygame.display.update()        
             ev = pygame.event.get()
             for event in ev:
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    print("wasgud")
-                elif event.type == pygame.KEYDOWN:
-                    if pygame.key.get_pressed()[K_f]:
-                        self.run = False
+                    self.run = False
+                    self.send_des(True)
+                elif event.type == pygame.KEYDOWN and pygame.key.get_pressed()[K_f]:
+                    self.run = False
+                    self.send_des(False)
                         
-
+    def send_des(self, desc: bool) -> bool:
+        return desc
 
 def text_objects(text, size):
     ''' function returns <textSurface> and the rect surrounding the surface'''
@@ -275,5 +275,9 @@ def text_objects(text, size):
     return textSurface, textSurface.get_rect()  
 
 if __name__ == '__main__':
-    Menu()
-    Environment()
+    op = Menu()
+    if op:
+        Environment()
+    else:
+        Character_Select()
+        Environment()
