@@ -28,8 +28,6 @@ class Player(sprite.Sprite):
         self.size = size
         self.image = pygame.transform.scale((image.load("ship.png")),
                                             (size, size))
-        # crunch to rotate an image
-        # image will be changed in ps
         self.image = pygame.transform.rotate(self.image, 135)
         self.rect = self.image.get_rect(center=(self.x, self.y))
         self.screen_size = screen_size
