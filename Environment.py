@@ -126,7 +126,7 @@ class Invader(sprite.Sprite):
                                             (size, size))
         self.rect = self.image.get_rect(center=(self.x, self.y))
         self.screen_size = screen_size
-        self.health = 3
+        self.health = 1
 
     def move(self, x, y):
         """
@@ -248,7 +248,6 @@ class Environment(object):
         self.enemy_bullets = sprite.Group()
 
         self.invaders = self.create_invaders()
-        self.barriers = self.create_barriers()
 
         self.keys = key.get_pressed()
         self.screen = pygame.display.set_mode(
@@ -272,10 +271,8 @@ class Environment(object):
 
             self.all_sprites.update()
             self.invaders.update()
-            self.barriers.update()
 
             self.invaders.draw(self.screen)
-            self.barriers.draw(self.screen)
             self.all_sprites.draw(self.screen)
 
             pygame.display.flip()
