@@ -7,7 +7,6 @@ class Player(sprite.Sprite):
     """
     This is a Player Class which is a subclass of pygame.sprite.Sprite
     Player Class creates controllable object
-
     Attributes:
         x: An integer represents x coordinate
         y: An integer represents y coordinate
@@ -58,7 +57,6 @@ class Bullet(sprite.Sprite):
     """
     This is a Bullet Class which is a subclass of pygame.sprite.Sprite
     Bullet Class creates uncontrollable object with specific behaviour
-
     Attributes:
         x: An integer represents x coordinate
         y: An integer represents y coordinate
@@ -100,7 +98,6 @@ class Invader(sprite.Sprite):
     """
     This is an Invader Class which is a subclass of pygame.sprite.Sprite
     Invader Class creates uncontrollable object
-
     Attributes:
         x: An integer represents x coordinate
         y: An integer represents y coordinate
@@ -141,7 +138,6 @@ class InvadersGroup(sprite.Group):
     This is an InvadersGroup Class which is a subclass of pygame.sprite.Group
     InvadersGroup Class is a collection of uncontrollable objects that
         subclasses of pygame.sprite.Sprite
-
     Attributes:
         screen_size: A Tuple(Integer, Integer) represents the size of a screen
         size: An integer represents the size of each member of InvadersGroup
@@ -174,7 +170,6 @@ class InvadersGroup(sprite.Group):
         """
         Calls the update method of every member sprite
         Group.update(*args): return None
-
         Calls the update method of every member sprite. All arguments that
         were passed to this method are passed to the Sprite update function.
         """
