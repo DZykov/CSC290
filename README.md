@@ -32,7 +32,7 @@
 
 ### Original Contributers
 * Demid - my contributions:
-* Asiya - my contributions:
+* Asiya - my contributions: [Asiya's Work](https://github.com/DZykov/CSC290/blob/master/AsiyasWork.rst)
 * Nic - my contributions:
 * Simrat - my contributions:
 
