@@ -6,6 +6,7 @@
    - [Game Features](#GameFeatures "Goto Game Features")
    - [Controls](##Controls "Goto Controls")
    - [Contributing](#Contributing "Goto Contributing")
+   - [To-Do and Issues](#To-do "Goto To-do and Issues")
    - [Issues](##Issues "Goto Issues")
 
 
@@ -42,7 +43,14 @@
 ### Software Community Contributers
    If you have pulled and worked on this code to help improve our game, feel free to add your name here to get your due credit
 
-## Issues
+## To-do and Issues
+   What we wish we completed and what game players wish was implemented
+- [ ] Add player's health on screen
+- [ ] Show what kind of mode the game is in
+- [ ] Create levels based on dificulty
+- [ ] Make multiplayer option
+
+
 
 
 
