@@ -1,7 +1,7 @@
 # CSC290
 
-##A project for the course csc290.
-####Essential variables:
+## A project for the course csc290.
+#### Essential variables:
     ⋅⋅* screen_size = (int, int) -> (width, height)
     ⋅⋅* background = (int, int, int) -> colour of the background 
     ⋅⋅* red = (255, 0, 0) -> RGB code for red colour to simplify work
