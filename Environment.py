@@ -49,10 +49,10 @@ class Player(sprite.Sprite):
         Overrides and calls the update method for this specific sprite
         """
         pressed_key = pygame.key.get_pressed()
-        if pressed_key[pygame.K_LEFT]:
+        if pressed_key[pygame.K_LEFT] or pressed_key[pygame.K_a]:
             if 0 <= self.x - 5 <= self.screen_size[0]:
                 self.move(-5, 0)
-        if pressed_key[pygame.K_RIGHT]:
+        if pressed_key[pygame.K_RIGHT] or pressed_key[pygame.K_d]:
             if 0 <= self.x + 5 <= self.screen_size[0]:
                 self.move(5, 0)
 
@@ -319,7 +319,7 @@ class Environment(object):
             if e.type == pygame.QUIT:
                 self.play = False
             if e.type == pygame.KEYDOWN:
-                if e.key == pygame.K_SPACE:
+                if e.key == pygame.K_SPACE or e.key == pygame.K_s:
                     if len(self.bullets) < self.max_bullets:
                         bullet = Bullet(self.player.x,
                                         self.player.y - self.player.size, -3, 0,
