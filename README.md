@@ -4,21 +4,33 @@
 ## Index
    - [Demo](##Demo "Goto Demo")
    - [Game Features](#GameFeatures "Goto Game Features")
+   - [Controls](##Controls "Goto Controls")
    - [Contributing](#Contributing "Goto Contributing")
    - [Issues](##Issues "Goto Issues")
-  
+
 
 ## Demo
 
 
 ## Game Features
+   - Player has 10 lives
+   - Moving Space Invaders that shoot to reduce player's health
+   - Barriers to block the space invaders bullets
+   - Start Menu
+   - Wild Mode starts when player's health gets low
+
+## Controls
+| Action       | Button                            |
+|--------------|-----------------------------------|
+| Move Left    | <kbd>left</kbd>, <kbd>a</kbd>     |
+| Move right   | <kbd>right</kbd>, <kbd>d</kbd>    |
+| Fire bullets | <kbd>spacebar</kbd>, <kbd>s</kbd> |
 
 
 ## Contributing
 
 
 ## Issues
-
 
 
 
