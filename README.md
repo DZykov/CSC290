@@ -1,5 +1,5 @@
 # CSC290
-<<<<<<< HEAD
+
 ##A project for the course csc290.
 ####Essential variables:
     ⋅⋅* screen_size = (int, int) -> (width, height)
@@ -9,7 +9,7 @@
     ⋅⋅* green = (0, 255, 0) -> RGB code for green colour to simplify work
     ⋅⋅* player_size = 30 -> the size of the player in int. Needed to track collisions and resize the sprite
     ⋅⋅* enemy_y_gap = 20 -> the gap between enemies in int. Needed to form a wel defined structure of groups enemies
-=======
+
 ## A project for the course csc290.
 #### Essential variables:
 * screen_size = (int, int) -> (width, height)
@@ -19,4 +19,3 @@
 * green = (0, 255, 0) -> RGB code for green colour to simplify work
 * player_size = 30 -> the size of the player in int. Needed to track collisions and resize the sprite
 * enemy_y_gap = 20 -> the gap between enemies in int. Needed to form a wel defined structure of groups enemies
->>>>>>> ec895c3... Added essential variables
