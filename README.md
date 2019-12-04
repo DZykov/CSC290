@@ -1,9 +1,30 @@
-# CSC290
+# Space Invaders: The Next Frontier
+    A modern take on the classic game Space Invaders
+
+## Index
+   - [Demo](##Demo "Goto Demo")
+   - [Game Features](#GameFeatures "Goto Game Features")
+   - [Contributing](#Contributing "Goto Contributing")
+   - [Issues](##Issues "Goto Issues")
+
+
+## Demo
+
+
+## Game Features
+
+
+## Contributing
+
+
+## Issues
+
+
 
 ## A project for the course csc290.
 #### Essential variables:
     ⋅⋅* screen_size = (int, int) -> (width, height)
-    ⋅⋅* background = (int, int, int) -> colour of the background 
+    ⋅⋅* background = (int, int, int) -> colour of the background
     ⋅⋅* red = (255, 0, 0) -> RGB code for red colour to simplify work
     ⋅⋅* blue = (0, 0, 255) -> RGB code for blue colour to simplify work
     ⋅⋅* green = (0, 255, 0) -> RGB code for green colour to simplify work
@@ -13,7 +34,7 @@
 ## A project for the course csc290.
 #### Essential variables:
 * screen_size = (int, int) -> (width, height)
-* background = (int, int, int) -> colour of the background 
+* background = (int, int, int) -> colour of the background
 * red = (255, 0, 0) -> RGB code for red colour to simplify work
 * blue = (0, 0, 255) -> RGB code for blue colour to simplify work
 * green = (0, 255, 0) -> RGB code for green colour to simplify work
