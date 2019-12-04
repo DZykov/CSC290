@@ -4,11 +4,9 @@
 ## Index
    - [Demo](##Demo "Goto Demo")
    - [Game Features](#GameFeatures "Goto Game Features")
-   - [Controls](##Controls "Goto Controls")
+   - [Controls](#Controls "Goto Controls")
    - [Contributing](#Contributing "Goto Contributing")
    - [To-Do and Issues](#To-do "Goto To-do and Issues")
-   - [Issues](##Issues "Goto Issues")
-
 
 ## Demo
 
