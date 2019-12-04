@@ -20,11 +20,11 @@
    - Wild Mode starts when player's health gets low
 
 ## Controls
-    | Action       | Button                            |
-    |--------------|-----------------------------------|
-    | Move Left    | <kbd>left</kbd>, <kbd>a</kbd>     |
-    | Move right   | <kbd>right</kbd>, <kbd>d</kbd>    |
-    | Fire bullets | <kbd>spacebar</kbd>, <kbd>s</kbd> |
+| Action       | Button                            |
+|--------------|-----------------------------------|
+| Move Left    | <kbd>left</kbd>, <kbd>a</kbd>     |
+| Move right   | <kbd>right</kbd>, <kbd>d</kbd>    |
+| Fire bullets | <kbd>spacebar</kbd>, <kbd>s</kbd> |
 
 
 ## Contributing
