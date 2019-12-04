@@ -6,16 +6,12 @@ import pygame
 
 class Player(sprite.Sprite):
 
-    def __init__(self, screen_size, size):
+    def __init__(self, screen_size, size, color):
         sprite.Sprite.__init__(self)
         self.x = screen_size[0] / 2
         self.y = screen_size[1] - size - 5
         self.size = size
-        self.image = pygame.transform.scale((image.load("ship.png")),
-                                            (size, size))
-        # crunch to rotate an image
-        # image will be changed in ps
-        self.image = pygame.transform.rotate(self.image, 135)
+        self.image = pygame.transform.scale((image.load("ship " +str(color)+ ".png")),(size, size))
         self.rect = self.image.get_rect(center=(self.x, self.y))
         self.screen_size = screen_size
         self.prev_coord = (self.x, self.y)
@@ -132,7 +128,8 @@ class InvadersGroup(sprite.Group):
 
 
 class Environment(object):
-    def __init__(self):
+   
+    def __init__(self, color):
         init()
         self.screen_size = (800, 400)
         background = (0, 0, 0)
@@ -141,6 +138,7 @@ class Environment(object):
         green = (0, 255, 0)
         self.size = 30
         self.gap = 20
+        self.color = color
 
         self.max_bullets = 3  # number of bullets allowed
         self.bullets = sprite.Group()
@@ -154,7 +152,7 @@ class Environment(object):
         self.play = True
         self.clock = pygame.time.Clock()
 
-        self.player = Player(self.screen_size, self.size)
+        self.player = Player(self.screen_size, self.size, self.color)
 
         self.all_sprites = sprite.Group()
         self.all_sprites.add(self.player)
@@ -239,33 +237,50 @@ class Menu(object):
 
         while self.run:            
             self.screen.fill(background)
-                    #pygame.draw.rect(self.screen, blue ,(225, 270, 70, 35)) first rectangle
-                    #pygame.draw.rect(self.screen, blue ,(465, 270, 70, 35))
-                    #TR1.center = (260,285) - old value that might be used
-                    #TR2.center = (500, 285)
-            
             TS, TR = text_objects("SPACE INVADERS: The Next Frontier", 40)
             TS1, TR1 = text_objects("Press F to Start", 15)
-            TS2, TR2 = text_objects("Click to Select Ship", 15)
             TR.center = (self.screen_size[0]//2, 100) 
-            TR1.center = (self.screen_size[0]//2, self.screen_size[1]//2 + 75)
-            TR2.center = (self.screen_size[0]//2, self.screen_size[1]//2 + 120)
-            pygame.draw.rect(self.screen, blue ,(330, 305, 140, 35))
+            TR1.center = (self.screen_size[0]//2, self.screen_size[1]//2 + 85)
             self.screen.blit(TS, TR)
             self.screen.blit(TS1, TR1)
-            self.screen.blit(TS2, TR2)
             pygame.display.update()        
             ev = pygame.event.get()
             for event in ev:
+                if event.type == pygame.KEYDOWN and pygame.key.get_pressed()[K_f]:
+                    self.run = False
+
+
+
+class Character_Select(object):
+
+    def __init__(self):
+        self.screen_size = (800, 400)
+        background = (0, 0, 0)
+        blue = (0, 0, 255)
+        self.screen = pygame.display.set_mode((self.screen_size[0], self.screen_size[1])) 
+        self.run = True 
+        self.clock = pygame.time.Clock()
+        self.ship_col = 0
+    
+        while self.run:
+            self.screen.fill(background)
+            position = draw_menu(self.screen, 150, 55, 0)
+            TS, TR = text_objects("DOUBLE CLICK to select ship color", 30)
+            TR.center = (self.screen_size[0]//2, 20)
+            self.screen.blit(TS, TR)  
+            pygame.display.update()
+            ev = pygame.event.get()
+            for event in ev:
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    self.run = False
-                    self.send_des(True)
-                elif event.type == pygame.KEYDOWN and pygame.key.get_pressed()[K_f]:
-                    self.run = False
-                    self.send_des(False)
-                        
-    def send_des(self, desc: bool) -> bool:
-        return desc
+                    pos = pygame.mouse.get_pos()
+                    for i in range(len(position)):
+                        if position[i][0] <= pos[0] <= position[i][0]+150 and position[i][1] <= pos[1] <= position[i][1]+100:
+                            self.ship_col = i
+                            self.run = False
+                            break
+                break       
+
+                            
 
 def text_objects(text, size):
     ''' function returns <textSurface> and the rect surrounding the surface'''
@@ -274,10 +289,45 @@ def text_objects(text, size):
     textSurface = BASICFONT.render(text, True, (255,255,255))
     return textSurface, textSurface.get_rect()  
 
+def draw_menu(screen, x, y, row):
+    """Draws the necessary menu layout on the screen"""
+    colors = { 0: (255,6,80), 1: (218,165,32), 2: (107,142,35), 
+               3: (64,224,208), 4: (153,255,204), 5: (111,90,255), 
+               6: (169,169,169), 7: (240,230,140), 8: (255,64,255) }
+    position = []
+    while row < 3:
+        color = 0
+        if row is 0:
+            for i in range(3):
+                position.append((x,y))
+                pygame.draw.rect(screen, colors[color] ,(x , y, 150, 100))
+                x += 165
+                color +=1
+                
+        elif row is 1:
+            y += 115
+            color = 3
+            for i in range(3):
+                position.append((x,y))
+                pygame.draw.rect(screen, colors[color] ,(x , y, 150, 100))    
+                x+= 165
+                color +=1 
+        else:
+            y += 230
+            color = 6
+            for i in range(3):
+                position.append((x,y))
+                pygame.draw.rect(screen, colors[color], (x,y,150, 100))
+                x+=165
+                color +=1
+        
+        x, y, = 150, 55 
+        row +=1 
+    
+    return position
+    
 if __name__ == '__main__':
-    op = Menu()
-    if op:
-        Environment()
-    else:
-        Character_Select()
-        Environment()
+    Menu()
+    Character_Select()
+    color = Character_Select().ship_col
+    Environment(color)
