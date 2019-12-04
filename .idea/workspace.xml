@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9b1c27b-083d-40c5-93cb-91c9b72ef937" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/dist/Space Invaders.app.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/Space Invaders.app/Contents/Info.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/Space Invaders.app/Contents/MacOS/Space Invaders" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/Space Invaders.app/Contents/MacOS/python" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/Space Invaders.app/Contents/PkgInfo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/Space Invaders.app/Contents/Resources/__boot__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/Space Invaders.app/Contents/Resources/__error__.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/Space Invaders.app/Contents/Resources/lib/python3.7/config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/Space Invaders.app/Contents/Resources/site.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Environment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
