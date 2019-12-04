@@ -1,4 +1,6 @@
 Contributions: Asiya Khan
+-------------------------
+
     One of the main perks of being part of a group is the collaborative and
     supportive environment that comes with it. Working in a group like mine not
     only assisted me in improving my communication skills but it also means that
