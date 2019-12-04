@@ -28,7 +28,19 @@
 
 
 ## Contributing
+   This assignment was originally created for the purposes of a Computer Science Communications course, we tried our very        best to make sure it reaches professional standards but there is a possibility that it misses the mark.
 
+### Original Contributers
+* Demid - my contributions:
+* Asiya - my contributions:
+* Nic - my contributions:
+* Simrat - my contributions:
+
+### Future Contributers
+   We know our code is not perfect, in fact it is very far from it. We hope that if you're reading this, you might be interested in being part of the process that betters our work. We encourage you to pull our repo and make changes you think can make Space Invaders: The Next Frontier even better :)
+
+### Software Community Contributers
+   If you have pulled and worked on this code to help improve our game, feel free to add your name here to get your due credit
 
 ## Issues
 
