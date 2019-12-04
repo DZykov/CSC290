@@ -6,7 +6,7 @@
    - [Game Features](#GameFeatures "Goto Game Features")
    - [Controls](#Controls "Goto Controls")
    - [Contributing](#Contributing "Goto Contributing")
-   - [To-Do and Issues](#To-do "Goto To-do and Issues")
+   - [To-Do and Issues](#To-doandIssues "Goto To-do and Issues")
 
 ## Demo
 
