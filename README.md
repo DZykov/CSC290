@@ -61,12 +61,14 @@ Download Space Invaders.app and follow the standard procedure for installing .ap
    If you have pulled and worked on this code to help improve our game, feel free to add your name here to get your due credit
 
 ## To-Do and Issues
-   What we wish we completed and what game players wish was implemented
+   What we wish we completed and what other game players wish was implemented:
 - [ ] Add player's health on screen
 - [ ] Show what kind of mode the game is in
 - [ ] Create levels based on dificulty
 - [ ] Make multiplayer option
 - [ ] Add sounds and music
+    
+    If you would like to add to this or want to report an error or bug, feel free to push to this!
 
 
 
