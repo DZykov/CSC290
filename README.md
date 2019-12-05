@@ -1,5 +1,5 @@
 # Space Invaders: The Next Frontier
-    A modern take on the classic game Space Invaders
+    A modern take on the classic game Space Invaders written in Python using Pygame software
 
 ## Index
    - [Demo](#Demo "Goto Demo")
