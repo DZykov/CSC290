@@ -4,13 +4,13 @@
 ## Index
    - [Demo](#Demo "Goto Demo")
    - [Installation](#Installation "Goto Installation")
-   - [Game Features](#GameFeatures "Goto Game Features")
+   - [Game Features](#Game-Features "Goto Game-Features")
    - [Controls](#Controls "Goto Controls")
    - [Contributing](#Contributing "Goto Contributing")
       - [Original Contributers](#Contributing "Goto Contributing")
       - [Future Contributers](#Contributing "Goto Contributing")
       - [Software Community Contributers](#Contributing "Goto Contributing")
-   - [ToDo and Issues](#ToDo-and-Issues "Goto ToDo-and-Issues")
+   - [To-Do and Issues](#To-Do-and-Issues "Goto ToDo-and-Issues")
 
 ## Demo
 
@@ -60,7 +60,7 @@ Download Space Invaders.app and follow the standard procedure for installing .ap
 ### Software Community Contributers
    If you have pulled and worked on this code to help improve our game, feel free to add your name here to get your due credit
 
-## ToDo and Issues
+## To-Do and Issues
    What we wish we completed and what game players wish was implemented
 - [ ] Add player's health on screen
 - [ ] Show what kind of mode the game is in
