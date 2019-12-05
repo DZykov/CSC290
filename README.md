@@ -4,7 +4,7 @@
 ## Index
    - [Demo](#Demo "Goto Demo")
    - [Installation](#Installation "Goto Installation")
-   - [Game Features](#Game Features "Goto Game Features")
+   - [Game Features](#GameFeatures "Goto Game Features")
    - [Controls](#Controls "Goto Controls")
    - [Contributing](#Contributing "Goto Contributing")
    - [To-Do and Issues](#To-doandIssues "Goto To-do and Issues")
