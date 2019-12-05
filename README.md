@@ -7,11 +7,14 @@
    - [Game Features](#GameFeatures "Goto Game Features")
    - [Controls](#Controls "Goto Controls")
    - [Contributing](#Contributing "Goto Contributing")
+      - [Original Contributers](#Contributing "Goto Contributing")
+      - [Future Contributers](#Contributing "Goto Contributing")
+      - [Software Community Contributers](#Contributing "Goto Contributing")
    - [To-Do and Issues](#To-doandIssues "Goto To-do and Issues")
 
 ## Demo
 
-## Installation 
+## Installation
 #### Option 1: Build from source
 You need to have python and library pygame installed for this option.
 
@@ -19,9 +22,9 @@ Clone the repo, open the folder and run the sources file
 
 
     $ git clone https://github.com/DZykov/CSC290.git
-    $ cd CSC290/ 
+    $ cd CSC290/
     $ python Environment.py
- 
+
 #### Option 2: Executable file for MacOs
 
 Download Space Invaders.app and follow the standard procedure for installing .app files for MacOs
@@ -42,6 +45,7 @@ Download Space Invaders.app and follow the standard procedure for installing .ap
 | Move right   | <kbd>right</kbd>, <kbd>d</kbd>    |
 | Fire bullets | <kbd>spacebar</kbd>, <kbd>s</kbd> |
 
+##Installation
 
 ## Contributing
    This assignment was originally created for the purposes of a Computer Science Communications course, we tried our very        best to make sure it reaches professional standards but there is a possibility that it misses the mark.
