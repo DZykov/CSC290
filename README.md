@@ -49,7 +49,7 @@ Download Space Invaders.app and follow the standard procedure for installing .ap
    This assignment was originally created for the purposes of a Computer Science Communications course, we tried our very        best to make sure it reaches professional standards but there is a possibility that it misses the mark.
 
 ### Original Contributers
-* Demid - my contributions:
+* Demid - my contributions: [Demid's Work](https://github.com/DZykov/CSC290/blob/master/DemidsWork.rst)
 * Asiya - my contributions: [Asiya's Work](https://github.com/DZykov/CSC290/blob/master/AsiyasWork.rst)
 * Nic - my contributions:
 * Simrat - my contributions:
