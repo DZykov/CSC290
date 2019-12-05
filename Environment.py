@@ -110,6 +110,77 @@ class Bullet(sprite.Sprite):
                 self.x < 0 or self.x > self.screen_size[0]:
             self.kill()
 
+class Barrier(sprite.Sprite):
+    def __init__(self, screen_size, size, string1, string2, string3, x, y):
+        sprite.Sprite.__init__(self)
+        self.health = 10
+        self.x = x
+        self.y = y
+        self.size = size
+        self.image = pygame.transform.scale((image.load(string1)), (size * 3, size))
+        self.image2 = pygame.transform.scale((image.load(string2)), (size * 3, size))
+        self.image3 = pygame.transform.scale((image.load(string3)), (size * 3, size))
+        self.rect = self.image.get_rect(center=(self.x * 5, self.y))
+        self.screen_size = screen_size
+
+    def move(self, x, y):
+        if 0 <= self.x + x <= self.screen_size[0] and 0 <= self.y + y <= \
+                self.screen_size[1]:
+            self.x += x
+            self.y += y
+            self.rect = self.rect.move((x, y))
+
+    def update(self):
+        if 0 < self.health < 7:
+            self.image = self.image2
+        if 0 < self.health < 3:
+            self.image = self.image3
+
+
+
+class BarrierGroup(sprite.Group):
+    def __init__(self, screen_size, size, space):
+        sprite.Group.__init__(self)
+        self.screen_size = screen_size
+        self.size = size
+        self.space = space
+        self.barriers = []
+        self.way = "R"
+
+    def move(self, x, y):
+        for barrier in self.barriers:
+            barrier.move(x, y)
+
+    def move(self, x, y):
+        for barrier in self.barriers:
+            barrier.move(x, y)
+
+    def update(self):
+        if len(self.barriers) == 0:
+            pass
+        elif self.way == "L":
+            self.move(-1, 0)
+            if self.barriers[0].x - self.barriers[-1].size <= 20:
+                self.way = "R"
+        elif self.way == "R":
+            self.move(1, 0)
+            if self.barriers[-1].x >= \
+                    self.screen_size[0] - 2.5*self.space - self.barriers[-1].size :
+                self.way = "L"
+
+    def add_internal(self, *sprites):
+        super(BarrierGroup, self).add_internal(*sprites)
+        for x in sprites:
+            self.barriers.append(x)
+
+    def remove_internal(self, *sprites):
+        """
+        Removes and deletes all given sprite from InvadersGroup
+        """
+        super(BarrierGroup, self).remove_internal(*sprites)
+        for x in sprites:
+            self.barriers.remove(x)
+            del x
 
 class Invader(sprite.Sprite):
     """
@@ -208,6 +279,7 @@ class InvadersGroup(sprite.Group):
         for invader in self.invaders:
             invader.move(x, y, health)
 
+
     def update(self, health):
         """
         Calls the update method of every member sprite
@@ -293,6 +365,10 @@ class Environment(object):
         self.all_sprites = sprite.Group()
         self.all_sprites.add(self.player)
 
+
+        self.barriers = self.create_barriers()
+
+
         while self.play:
             self.clock.tick(60)
             self.screen.fill(background)
@@ -307,6 +383,7 @@ class Environment(object):
 
             self.invaders.draw(self.screen)
             self.all_sprites.draw(self.screen)
+            self.barriers.draw(self.screen)
 
             pygame.display.flip()
 
