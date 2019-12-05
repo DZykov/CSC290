@@ -14,6 +14,8 @@
 
 ## Demo
 
+[![Demo video (Link to Youtube)](https://img.youtube.com/vi/2f4NOmMey8I/0.jpg)](https://www.youtube.com/watch?v=2f4NOmMey8I)
+
 ## Installation
 #### Option 1: Build from source
 You need to have python and library pygame installed for this option.
