@@ -10,6 +10,6 @@ Contributions: Demid Zykov
     
     I have created main functionality for the classes Player, Invader, InvadersGroup and Bullet by my self. After these classes were implemented, I put everything together in the Environment class to check that everything is working right. Unfortunately, I found a bug with invaders: some invaders were overlaying on top of each other at some point of the iteration; I did not fix the bug. After all code was done from my side, I did documentation for each class and its methods. 
     
-Last and not least, I cleared the code from unnecessary lines and variables and made the source look better. Additionallu, I did bug testing and some other additional tests to ensure that the game runs properly and does not freeze.
+    Last and not least, I cleared the code from unnecessary lines and variables and made the source look better. Additionallu, I did bug testing and some other additional tests to ensure that the game runs properly and does not freeze.
     
 
