@@ -3,6 +3,7 @@
 
 ## Index
    - [Demo](##Demo "Goto Demo")
+   - [Installation](##Installation "Goto Installation")
    - [Game Features](#GameFeatures "Goto Game Features")
    - [Controls](#Controls "Goto Controls")
    - [Contributing](#Contributing "Goto Contributing")
