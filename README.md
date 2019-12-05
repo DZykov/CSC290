@@ -2,9 +2,9 @@
     A modern take on the classic game Space Invaders
 
 ## Index
-   - [Demo](##Demo "Goto Demo")
-   - [Installation](##Installation "Goto Installation")
-   - [Game Features](#GameFeatures "Goto Game Features")
+   - [Demo](#Demo "Goto Demo")
+   - [Installation](#Installation "Goto Installation")
+   - [Game Features](#Game Features "Goto Game Features")
    - [Controls](#Controls "Goto Controls")
    - [Contributing](#Contributing "Goto Contributing")
    - [To-Do and Issues](#To-doandIssues "Goto To-do and Issues")
@@ -64,6 +64,7 @@ Download Space Invaders.app and follow the standard procedure for installing .ap
 - [ ] Show what kind of mode the game is in
 - [ ] Create levels based on dificulty
 - [ ] Make multiplayer option
+- [ ] Add sounds and music
 
 
 
