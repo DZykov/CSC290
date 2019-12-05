@@ -10,6 +10,22 @@
 
 ## Demo
 
+## Installation 
+#### Option 1: Build from source
+You need to have python and library pygame installed for this option.
+
+Clone the repo, open the folder and run the sources file
+
+
+    $ git clone https://github.com/DZykov/CSC290.git
+    $ cd CSC290/ 
+    $ python Environment.py
+ 
+#### Option 2: Executable file for MacOs
+
+Download Space Invaders.app and follow the standard procedure for installing .app files for MacOs
+
+
 
 ## Game Features
    - Player has 10 lives
