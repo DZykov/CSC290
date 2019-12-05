@@ -15,6 +15,7 @@
 ## Demo
 
 Follow the youtube video to see the actual game:
+
 [![Demo video (Link to Youtube)](https://img.youtube.com/vi/2f4NOmMey8I/0.jpg)](https://www.youtube.com/watch?v=2f4NOmMey8I)
 
 ## Installation
