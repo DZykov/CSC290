@@ -10,7 +10,7 @@
       - [Original Contributers](#Contributing "Goto Contributing")
       - [Future Contributers](#Contributing "Goto Contributing")
       - [Software Community Contributers](#Contributing "Goto Contributing")
-   - [To-Do and Issues](#To-doandIssues "Goto To-do and Issues")
+   - [To-Do and Issues](#To-do_and_Issues "Goto To-do and Issues")
 
 ## Demo
 
@@ -44,8 +44,6 @@ Download Space Invaders.app and follow the standard procedure for installing .ap
 | Move Left    | <kbd>left</kbd>, <kbd>a</kbd>     |
 | Move right   | <kbd>right</kbd>, <kbd>d</kbd>    |
 | Fire bullets | <kbd>spacebar</kbd>, <kbd>s</kbd> |
-
-##Installation
 
 ## Contributing
    This assignment was originally created for the purposes of a Computer Science Communications course, we tried our very        best to make sure it reaches professional standards but there is a possibility that it misses the mark.
