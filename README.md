@@ -56,7 +56,7 @@ Download Space Invaders.app and follow the standard procedure for installing .ap
 * Demid - my contributions: [Demid's Work](https://github.com/DZykov/CSC290/blob/master/DemidsWork.rst)
 * Asiya - my contributions: [Asiya's Work](https://github.com/DZykov/CSC290/blob/master/AsiyasWork.rst)
 * Nic - my contributions:
-* Simrat - my contributions:
+* Simrat - my contributions:[Simrat's Work](https://github.com/DZykov/CSC290/blob/master/Simrats%20Contributions.html)
 
 ### Future Contributers
    We know our code is not perfect, in fact it is very far from it. We hope that if you're reading this, you might be interested in being part of the process that betters our work. We encourage you to pull our repo and make changes you think can make Space Invaders: The Next Frontier even better :)
