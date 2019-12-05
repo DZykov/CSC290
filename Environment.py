@@ -353,6 +353,7 @@ class Environment(object):
         self.enemy_bullets = sprite.Group()
 
         self.invaders = self.create_invaders()
+        self.barriers = self.create_barriers()
 
         self.keys = key.get_pressed()
         self.screen = pygame.display.set_mode(
@@ -380,6 +381,7 @@ class Environment(object):
 
             self.all_sprites.update()
             self.invaders.update(self.player.health)
+            self.barriers.update()
 
             self.invaders.draw(self.screen)
             self.all_sprites.draw(self.screen)
@@ -426,6 +428,23 @@ class Environment(object):
             if self.player.health <= 0:
                 print('you died')
                 self.play = False
+        hit_barrier = pygame.sprite.groupcollide(self.barriers, self.enemy_bullets, False, True)
+        for hit in hit_barrier:
+            hit.health = hit.health - 1
+            hit.update()
+            print('this barrier has ', hit.health)
+            if hit.health <= 0:
+                self.barriers.remove_internal(hit)
+
+    def create_barriers(self):
+        barriers = BarrierGroup(self.screen_size, self.size, self.gap * 10)
+        n = 3
+        h = 260
+        for i in range(n):
+            barrier = Barrier(self.screen_size, self.size, "asteroid 1.png", "asteroid 2.png", "asteroid 3.png",
+                              i * (self.gap + self.size), h)
+            barriers.add(barrier)
+        return barriers
 
     def create_invaders(self):
         """
