@@ -261,7 +261,7 @@ class InvadersGroup(sprite.Group):
 
 class Environment(object):
     """
-    Documentation needed ###TO-DO
+    Runs the game, initiates players and invaders and plays
     """
 
     def __init__(self):
