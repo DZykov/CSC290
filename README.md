@@ -3,7 +3,7 @@
 
 ## Index
    - [Demo](#Demo "Goto Demo")
-   - [Game play](#Game play "Goto Game play")
+   - [Game play](#Game play "Goto Game-play")
    - [Installation](#Installation "Goto Installation")
    - [Game Features](#Game-Features "Goto Game-Features")
    - [Controls](#Controls "Goto Controls")
@@ -13,7 +13,7 @@
       - [Software Community Contributers](#Contributing "Goto Contributing")
    - [To-Do and Issues](#To-Do-and-Issues "Goto ToDo-and-Issues")
 
-## Game play
+## Game-play
 
 This is a modern take on the classic game Space Invaders but with a few differences. First of all, the player has an 
 option of choosing the colour of a ship. Secondly, enemies have different movement: first stage is moving from
