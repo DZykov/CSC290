@@ -1,5 +1,4 @@
 Contributions: Demid Zykov
--------------------------
     
     One of the best experiences of this project was working in a team. This was a unique and 
     pleasant experience: all members of the group were passionate about the work they are doing.
@@ -12,4 +11,14 @@ Contributions: Demid Zykov
     
     Last and not least, I cleared the code from unnecessary lines and variables and made the source look better. Additionallu, I did bug testing and some other additional tests to ensure that the game runs properly and does not freeze.
     
+    Update:
+        - Added health information to the player
+        - Added sounds and music
+        - Added win/lose scenario with animations
+        - Looped the whole game play
+        - Added exit button all screens
+        - Added the colour change feature
+        - Fixed the "insane" mode
+        - Small fixes
 
+    Last thoughts: this project was undone and I decided to finish it a little bit.
