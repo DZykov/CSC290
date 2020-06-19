@@ -3,7 +3,7 @@
 
 ## Index
    - [Demo](#Demo "Goto Demo")
-   - [Game play](#Game play "Goto Game-play")
+   - [Game-play](#Game-play "Goto Game-play")
    - [Installation](#Installation "Goto Installation")
    - [Game Features](#Game-Features "Goto Game-Features")
    - [Controls](#Controls "Goto Controls")
